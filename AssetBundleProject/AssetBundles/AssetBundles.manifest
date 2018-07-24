@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 2731300257
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: scene/share
+      Dependencies: {}
+    Info_1:
+      Name: scene/cube.unity3d
+      Dependencies:
+        Dependency_0: scene/share
+    Info_2:
+      Name: scene/capsule.unity3d
+      Dependencies:
+        Dependency_0: scene/share
