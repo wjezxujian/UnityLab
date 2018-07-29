@@ -32,14 +32,34 @@ public class API03GameObject : MonoBehaviour {
         //Debug.Log(gameObj.name);
         //Debug.Log(gameObj.transform.name);
 
+        //查找方法1，FindObjectOfType
         //Light light = GameObject.FindObjectOfType<Light>();
         //light.enabled = false;
 
-        Transform[] transform = FindObjectsOfType<Transform>(); //不查找未激活的Object
-        foreach(var tran in transform)
-        {
-            Debug.Log(tran.name);
-        }
+        //查找方法2，FindObjectsOfType，不查找未激活的Object
+        //Transform[] transform = FindObjectsOfType<Transform>(); 
+        //foreach(var tran in transform)
+        //{
+        //    Debug.Log(tran.name);
+        //}
+
+        //查找方法3，Find, 全局查找，效率低下
+        //GameObject go = GameObject.Find("Main Camera");
+        //go.SetActive(false);
+
+        //查找方法4，FindGameObjectsWithTag
+        //GameObject[] gos = GameObject.FindGameObjectsWithTag("Main Camera");
+        //foreach(var go in gos)
+        //{
+        //    go.SetActive(false);
+        //}
+
+        //查找方法5，FindGameObjectWithTag
+        GameObject go = GameObject.FindGameObjectWithTag("Main Camera");
+        go.SetActive(false);
+        
+
+
 
 
 
