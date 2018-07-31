@@ -10,6 +10,11 @@ public class PanelControl : MonoBehaviour {
 	void Start () {
         tweenAnimation = GetComponent<DOTweenAnimation>();
         //tweenAnimation.DOPlay();
+        DOTween.logBehaviour = LogBehaviour.Default;
+        DOTween.useSmoothDeltaTime = true;
+        DOTween.maxSmoothUnscaledTime = 0.15f;
+        DOTween.showUnityEditorReport = true;
+        DOTween.timeScale = 1.5f;
 
 	}
 	
