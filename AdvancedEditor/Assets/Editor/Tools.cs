@@ -21,6 +21,15 @@ public class Tools {
         Debug.Log("GameObjectMyTool");
     }
 
+    [MenuItem("GameObject/delete", false, 11)]
+    static void MyDelete()
+    {
+        foreach(Object o in Selection.objects)
+        {
+            GameObject.DestroyImmediate(o);
+        }
+    }
+
     [MenuItem("Assets/mytool", false, 1000)]
     static void AssetsMyTool()
     {
@@ -29,10 +38,16 @@ public class Tools {
 
     //每一个菜单栏的proority优先级默认为1000
     //Proprity相差11就添加横线分组
-    [MenuItem("Tools/test1", false, 1)]
+    [MenuItem("Tools/Show Info", false, 1)]
     static void Test()
     {
-        Debug.Log("Test");
+        //默认显示的我们第一个游戏物体通过
+        //Debug.Log(Selection.activeGameObject.name);
+
+        Debug.Log(Selection.objects.Length);
+        Debug.Log(Selection.gameObjects.Length);
+
+        
     }
 
     [MenuItem("Tools/test2", false , 12)]
@@ -46,5 +61,7 @@ public class Tools {
     {
         Debug.Log("Test3");
     }
+
+
 
 }
