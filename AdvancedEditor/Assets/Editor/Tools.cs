@@ -21,12 +21,26 @@ public class Tools {
         Debug.Log("GameObjectMyTool");
     }
 
+    [MenuItem("GameObject/delete", true, 11)]
+    static bool MyDeleteValidate()
+    {
+        if(Selection.objects.Length > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     [MenuItem("GameObject/delete", false, 11)]
     static void MyDelete()
     {
         foreach(Object o in Selection.objects)
         {
-            GameObject.DestroyImmediate(o);
+            //GameObject.DestroyImmediate(o);
+            Undo.DestroyObjectImmediate(o); //利用Undo进行删除操作 是可以撤销的
         }
     }
 
@@ -56,7 +70,7 @@ public class Tools {
         Debug.Log("Test2");
     }
 
-    [MenuItem("Tools/test3", false, 0)]
+    [MenuItem("Tools/test3 _%t", false, 0)]
     static void Test3()
     {
         Debug.Log("Test3");

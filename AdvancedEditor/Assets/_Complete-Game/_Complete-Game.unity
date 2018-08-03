@@ -2966,6 +2966,26 @@ Prefab:
       propertyPath: m_BounceIntensity
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
+      propertyPath: startingHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
+      propertyPath: flashSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
   m_IsPrefabAsset: 0
