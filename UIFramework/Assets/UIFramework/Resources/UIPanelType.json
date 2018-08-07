@@ -1,0 +1,33 @@
+{
+    "infoList" :
+    [
+        {
+            "panelTypeStr": "ItemInfo",
+            "path": "UI/ItemInfoPanel"
+        },
+        {
+            "panelTypeStr": "Knapsack",
+            "path": "UI/KnapsackPanel"
+        },
+        {
+            "panelTypeStr": "MainMenu",
+            "path": "UI/MainMenuPanel"
+        },
+        {
+            "panelTypeStr": "Shop",
+            "path": "UI/ShopPanel"
+        },
+        {
+            "panelTypeStr": "Skill",
+            "path": "UI/SkillPanel"
+        },
+        {
+            "panelTypeStr": "System",
+            "path": "UI/SystemPanel"
+        },
+        {
+            "panelTypeStr": "Task",
+            "path": "UI/TaskPanel"
+        }
+    ]
+}
