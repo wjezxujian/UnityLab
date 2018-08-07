@@ -12,6 +12,18 @@ public class MainMenuPanel : BasePanel
 
     }
 
+    public override void OnPause()
+    {
+        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = false;
+    }
+
+    public override void OnResume()
+    {
+        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = true;
+    }
+
     public void Test()
     {
 

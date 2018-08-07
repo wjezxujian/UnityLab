@@ -58,6 +58,13 @@ public class UIManager
         }
         BasePanel panel = GetPanel(panelType);
 
+        if(panelStack.Count > 0)
+        {
+            BasePanel topPanel = panelStack.Peek();
+            topPanel.OnPause();
+        }
+
+        panel.OnEnter();
         panelStack.Push(panel);
     }
 
@@ -66,7 +73,16 @@ public class UIManager
     /// </summary>
     public void PopPanel()
     {
+        if(panelStack != null && panelStack.Count > 0)
+        {
+            BasePanel  panel = panelStack.Pop();
+            panel.OnExit();
 
+            if(panelStack.Count >0)
+            {
+                panelStack.Peek().OnResume();
+            }
+        }
     }
 
     private BasePanel GetPanel(UIPanelType panelType)

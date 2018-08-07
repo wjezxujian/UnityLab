@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222900133806434390}
   - component: {fileID: 114534135765920926}
   - component: {fileID: 114190119322257172}
+  - component: {fileID: 225588223103942972}
   m_Layer: 5
   m_Name: SystemPanel
   m_TagString: Untagged
@@ -202,7 +203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114167226745069396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114190119322257172}
+        m_MethodName: OnClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114721394339262798
@@ -296,3 +308,14 @@ RectTransform:
   m_AnchoredPosition: {x: 194, y: 216}
   m_SizeDelta: {x: 48.3, y: 48.3}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225588223103942972
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138125443130946}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

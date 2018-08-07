@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SkillPanel : BasePanel
 {
@@ -15,5 +16,20 @@ public class SkillPanel : BasePanel
     void Update()
     {
 
+    }
+
+    public override void OnEnter()
+    {
+        base.OnEnter();
+
+        transform.localScale = Vector3.zero;
+        transform.DOScale(1, .5f);
+
+    }
+
+
+    public override void OnExit()
+    {
+        transform.DOScale(0, .5f).OnComplete(()=> base.OnExit());
     }
 }

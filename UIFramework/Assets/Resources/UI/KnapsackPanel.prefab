@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222634702768193796}
   - component: {fileID: 114342904103569128}
   - component: {fileID: 114054718413477546}
+  - component: {fileID: 225207306552002270}
   m_Layer: 5
   m_Name: KnapsackPanel
   m_TagString: Untagged
@@ -121,7 +122,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114774317204957470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114054718413477546}
+        m_MethodName: OnClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114054718413477546
@@ -387,3 +399,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 333.9, y: 474}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225207306552002270
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499378453321130}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

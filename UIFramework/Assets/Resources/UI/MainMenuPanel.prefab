@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 222410958037364734}
   - component: {fileID: 114549513601077650}
   - component: {fileID: 114489410538779132}
+  - component: {fileID: 225227617633559656}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -455,7 +456,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: xitong
+  m_Text: "\u7CFB\u7EDF"
 --- !u!114 &114219813226226352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1480,3 +1481,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225227617633559656
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291189207908210}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

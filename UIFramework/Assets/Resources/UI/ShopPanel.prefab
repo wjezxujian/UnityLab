@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 222337554153416444}
   - component: {fileID: 114347198680993200}
   - component: {fileID: 114250940811528982}
+  - component: {fileID: 225671621393398532}
   m_Layer: 5
   m_Name: ShopPanel
   m_TagString: Untagged
@@ -183,7 +184,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114583144603817754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114250940811528982}
+        m_MethodName: OnClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114933060692465226
@@ -296,3 +308,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 158.4}
   m_SizeDelta: {x: 160, y: 28.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225671621393398532
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698203666186156}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
