@@ -40,13 +40,36 @@ public class UIManager
     private Dictionary<UIPanelType, string> panelPathDict;
     //保存所有面板的游戏物体身上的BasePanel
     private Dictionary<UIPanelType, BasePanel> panelDict;
+    private Stack<BasePanel> panelStack;
 
     private UIManager()
     {
         ParseUIPanelTypeJson();
     }
 
-    public BasePanel GetPanel(UIPanelType panelType)
+    /// <summary>
+    /// 把某个页面入栈，把某个界面显示在界面上
+    /// </summary>
+    public void PushPanel(UIPanelType panelType)
+    {
+        if(panelStack == null)
+        {
+            panelStack = new Stack<BasePanel>();
+        }
+        BasePanel panel = GetPanel(panelType);
+
+        panelStack.Push(panel);
+    }
+
+    /// <summary>
+    /// 出栈，把某个界面移除
+    /// </summary>
+    public void PopPanel()
+    {
+
+    }
+
+    private BasePanel GetPanel(UIPanelType panelType)
     {
         if(panelDict == null)
         {
@@ -65,7 +88,7 @@ public class UIManager
             //panelPathDict.TryGetValue(panelType, out path);
             string path = panelPathDict.TryGet(panelType);
             GameObject _instancePanel = GameObject.Instantiate(Resources.Load(path)) as GameObject;
-            _instancePanel.transform.SetParent(canvasTransfrom);
+            _instancePanel.transform.SetParent(CanvasTransform, false);
             panelDict.Add(panelType, _instancePanel.GetComponent<BasePanel>());
             panel =  _instancePanel.GetComponent<BasePanel>();
         }

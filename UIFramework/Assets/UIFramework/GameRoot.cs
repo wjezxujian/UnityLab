@@ -8,7 +8,8 @@ public class GameRoot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        UIManager.Instance.Test();
+        //UIManager.Instance.Test();
+        UIManager.Instance.PushPanel(UIPanelType.MainMenu);
     }
 
     // Update is called once per frame
