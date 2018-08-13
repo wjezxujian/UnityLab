@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 687311555}
   - component: {fileID: 687311554}
   - component: {fileID: 687311553}
+  - component: {fileID: 687311556}
   m_Layer: 0
   m_Name: PinchCude
   m_TagString: Untagged
@@ -683,7 +684,7 @@ MonoBehaviour:
   axesAction: 6
   sensibility: 1
   directCharacterController: {fileID: 0}
-  inverseAxisValue: 0
+  inverseAxisValue: 1
   onPinchAction:
     m_PersistentCalls:
       m_Calls:
@@ -967,6 +968,48 @@ MonoBehaviour:
     m_TypeName: HedgehogTeam.EasyTouch.QuickTouch+OnTouchNotOverMe, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   actionTriggering: 0
+--- !u!114 &687311556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687311544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38cfe9733704674da647859a90a3734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quickActionName: QuickTwist8eabc95
+  isMultiTouch: 0
+  is2Finger: 0
+  isOnTouch: 0
+  enablePickOverUI: 0
+  resetPhysic: 0
+  directAction: 5
+  axesAction: 6
+  sensibility: 1
+  directCharacterController: {fileID: 0}
+  inverseAxisValue: 0
+  onTwistAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1195991691}
+        m_MethodName: PrintNum
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: HedgehogTeam.EasyTouch.QuickTwist+OnTwistAction, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  isGestureOnMe: 1
+  actionTriggering: 0
+  rotationDirection: 0
+  enableSimpleAction: 1
 --- !u!1 &1195991689
 GameObject:
   m_ObjectHideFlags: 0

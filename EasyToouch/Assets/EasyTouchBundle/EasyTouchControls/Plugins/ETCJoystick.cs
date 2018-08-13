@@ -503,8 +503,18 @@ public class ETCJoystick : ETCBase,IPointerEnterHandler,IDragHandler, IBeginDrag
 		}
 		else{
 			if ((axisX.axisValue==0 && axisY.axisValue==0) &&  axisX.directCharacterController ){
-				if (!axisX.directCharacterController.isGrounded && tmLockInJump)
-					DoTurnAndMove();
+				if (!axisX.directCharacterController.isGrounded)
+                {
+                    if(!tmLockInJump)
+                    {
+                        DoTurnAndMove();
+                    }
+                    else
+                    {
+                        tmLastMove = Vector3.zero;
+                    }
+                }
+					
 			}
 		}
 
