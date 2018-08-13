@@ -179,6 +179,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &158216847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 9d4133d5d30b644bd87802a347eaccbe,
+    type: 2}
+  m_PrefabInternal: {fileID: 397793758}
 --- !u!1 &206339769
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +588,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {fileID: 0}
+            value: {fileID: 158216847}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -596,7 +601,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 
+          value: Untagged
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
