@@ -224,7 +224,7 @@ public class AvatarSys : MonoBehaviour
         {
             if(str[i,0] == part)
             {
-                str[i, 0] = index;
+                str[i, 1] = index;
             }
         }
     }
