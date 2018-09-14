@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AvatarSys : MonoBehaviour
 {
+    public static AvatarSys _instance =null;
+
     //资源Model Transform
     private Transform girlSourceTrans;
     //骨架物体，换装的目标
@@ -30,13 +32,24 @@ public class AvatarSys : MonoBehaviour
     //初始化信息
     private string[,] boyStr = new string[,] { { "eyes", "1" }, { "hair", "1" }, { "top", "1" }, { "pants", "1" }, { "shoes", "1" }, { "face", "1" } };
 
-    private int nowCount = 0; //0代表女孩，1代表男孩
+    public int nowCount = 0; //0代表女孩，1代表男孩
+
+    public GameObject boyPanel;
+    public GameObject girlPanel;
+
+    private void Awake()
+    {
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // Use this for initialization
     void Start()
     {
-        //GirlAvatar();
+        GirlAvatar();
         BoyAvatar();
+
+        boyTarget.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,7 +62,7 @@ public class AvatarSys : MonoBehaviour
         //}
     }
 
-    void GirlAvatar()
+    public void GirlAvatar()
     {
         InstantiateGirl();
 
@@ -57,7 +70,7 @@ public class AvatarSys : MonoBehaviour
         InitAvatarGirl();
     }
 
-    void BoyAvatar()
+    public void BoyAvatar()
     {
         InstantiateBoy();
 
@@ -95,6 +108,9 @@ public class AvatarSys : MonoBehaviour
         if (sourceTrans == null)
             return;
 
+        data.Clear();
+        smr.Clear();
+
         //遍历所有子物体有SkinnedMeshRender 进行存储
         SkinnedMeshRenderer[] parts = sourceTrans.GetComponentsInChildren<SkinnedMeshRenderer>();
         foreach(var part in parts)
@@ -121,7 +137,7 @@ public class AvatarSys : MonoBehaviour
 
     //传入部位，编号，从data里边拿取对应的skm
     void ChangeMesh(string part, string index, Dictionary<string, Dictionary<string, SkinnedMeshRenderer>> data, 
-        Transform[] hips, Dictionary<string, SkinnedMeshRenderer> smr)
+        Transform[] hips, Dictionary<string, SkinnedMeshRenderer> smr, string[,] str)
     {
         //TODO 鲁棒性判断
 
@@ -146,6 +162,8 @@ public class AvatarSys : MonoBehaviour
         smr[part].bones = bones.ToArray();
         smr[part].materials = skm.materials;
         smr[part].sharedMesh = skm.sharedMesh;
+
+        SaveData(part, index, str);
     }
 
     //初始化骨架让他有mesh材质 骨骼信息
@@ -155,7 +173,7 @@ public class AvatarSys : MonoBehaviour
         for (int i = 0; i < length; ++i)
         {
             //r
-            ChangeMesh(girlStr[i, 0], girlStr[i, 1], girlData, girlHips, girlSmr);
+            ChangeMesh(girlStr[i, 0], girlStr[i, 1], girlData, girlHips, girlSmr, girlStr);
         }
     }
 
@@ -166,7 +184,50 @@ public class AvatarSys : MonoBehaviour
         for (int i = 0; i < length; ++i)
         {
             //r
-            ChangeMesh(boyStr[i, 0], boyStr[i, 1], boyData, boyHips, boySmr);
+            ChangeMesh(boyStr[i, 0], boyStr[i, 1], boyData, boyHips, boySmr, boyStr);
         }
     }
+
+    public void OnChangePeople(string part, string num)
+    {
+        if(nowCount == 0) //Girl
+        {
+            ChangeMesh(part, num, girlData, girlHips, girlSmr, girlStr);
+        }
+        else //Boy
+        {
+            ChangeMesh(part, num, boyData, boyHips, boySmr, boyStr);
+        }
+    }
+
+    //性别转换，人物隐藏，面板隐藏
+    public void SexChange()
+    {
+        if(nowCount == 0)
+        {
+            nowCount = 1;
+            boyTarget.SetActive(true);
+            girlTarget.SetActive(false);
+        }
+        else
+        {
+            nowCount = 0;
+            boyTarget.SetActive(false);
+            girlTarget.SetActive(true);
+        }
+    }
+
+    void SaveData(string part, string index, string[,] str)
+    {
+        int length = boyStr.GetLength(0);
+        for (int i = 0; i < length; ++i)
+        {
+            if(str[i,0] == part)
+            {
+                str[i, 0] = index;
+            }
+        }
+    }
+
+
 }

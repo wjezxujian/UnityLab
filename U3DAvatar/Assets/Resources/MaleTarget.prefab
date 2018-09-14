@@ -410,9 +410,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4726997467803098}
   - component: {fileID: 111151986735000456}
+  - component: {fileID: 136854793897386732}
+  - component: {fileID: 114762823660193376}
   m_Layer: 0
   m_Name: MaleTarget
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1654,3 +1656,28 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114762823660193376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452243980616406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1485eca164cf5488e631148a22f029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 3
+--- !u!136 &136854793897386732
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452243980616406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.45
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.79, z: 0}
