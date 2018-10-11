@@ -11,7 +11,14 @@ public class GameFacade
 
     public static GameFacade Instance
     {
-        get { return _instance; }
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = new GameFacade();
+            }
+            return _instance;
+        }
     }
 
     public bool isGameOver
