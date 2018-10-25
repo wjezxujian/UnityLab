@@ -23,8 +23,9 @@ public class ICharacterAttr
     public int dmgDescValue { get { return mDmgDescValue; } }
     public int currentHP { get { return mCurrentHP; } }
 
-    public ICharacterAttr(IAttrStrategy strategy, string name, int maxHP, float moveSpeed, string iconSprite, string prefabName)
+    public ICharacterAttr(IAttrStrategy strategy, int lv, string name, int maxHP, float moveSpeed, string iconSprite, string prefabName)
     {
+        mLv = lv;
         mName = name;
         mMaxHP = maxHP;
         mMoveSpeed = moveSpeed;

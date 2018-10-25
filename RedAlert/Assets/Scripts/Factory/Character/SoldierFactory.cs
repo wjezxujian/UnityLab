@@ -46,7 +46,7 @@ class SoldierFactory : ICharacterFactory
             return null;
         }
 
-        ICharacterAttr attr = new SoldierAttr(new SoldierAttrStrategy(), name, maxHP, moveSpeed, iconSprite, prefabName);
+        ICharacterAttr attr = new SoldierAttr(new SoldierAttrStrategy(), lv, name, maxHP, moveSpeed, iconSprite, prefabName);
         character.attr = attr;
 
         //创建角色游戏物体

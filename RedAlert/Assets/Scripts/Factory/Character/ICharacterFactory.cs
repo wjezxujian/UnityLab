@@ -5,6 +5,6 @@ using UnityEngine;
 
 public interface ICharacterFactory
 {
-    public ICharacter CreateCharacter<T>(WeaponType weaponType, Vector3 spawnPosition, int lv = 1) where T:ICharacter, new();
+    ICharacter CreateCharacter<T>(WeaponType weaponType, Vector3 spawnPosition, int lv = 1) where T:ICharacter, new();
 }
   
