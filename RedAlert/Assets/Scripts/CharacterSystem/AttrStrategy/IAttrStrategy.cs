@@ -6,5 +6,5 @@ public interface IAttrStrategy
 {
     int GetExtraHPValue(int lv);
     int GetDmgDescValue(int lv);
-    int GetCritDmgValue(int critRate);
+    int GetCritDmgValue(float critRate);
 }

@@ -23,7 +23,7 @@ class DM02Bridge : MonoBehaviour
 
         IWeapon rifle = new WeaponRocket();
         character.weapon = rifle;
-        character.Attack(new Vector3(1, 1, 1));
+        //character.Attack(new Vector3(1, 1, 1));
     }
 }
 

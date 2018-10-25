@@ -15,7 +15,7 @@ class EnemyAttrStrategy : IAttrStrategy
         return 0;
     }
 
-    public int GetCritDmgValue(int critRate)
+    public int GetCritDmgValue(float critRate)
     {
         if(UnityEngine.Random.Range(0, 1f) < critRate)
         {

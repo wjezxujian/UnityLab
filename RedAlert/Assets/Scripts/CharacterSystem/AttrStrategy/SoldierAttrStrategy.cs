@@ -14,7 +14,7 @@ class SoldierAttrStrategy : IAttrStrategy
         return (lv - 1) * 5;
     }
 
-    public int GetCritDmgValue(int critRate)
+    public int GetCritDmgValue(float critRate)
     {
         return 0;
     }

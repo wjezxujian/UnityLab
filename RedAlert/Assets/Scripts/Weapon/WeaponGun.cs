@@ -29,6 +29,12 @@ public class WeaponGun : IWeapon
     //    mAudio.Play();
 
     //}
+
+    public WeaponGun(int atk, float atkRange, GameObject gameObject) : base(atk, atkRange, gameObject)
+    {
+
+    }
+
     protected override void SetEffectDisplayTime()
     {
         mEffectDisplayTime = 0.2f;

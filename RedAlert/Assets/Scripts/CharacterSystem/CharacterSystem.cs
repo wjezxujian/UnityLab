@@ -5,18 +5,51 @@ using System.Text;
 
 public class CharacterSystem : IGameSystem
 {
-    public void Init()
+    protected List<ICharacter> mEnemys = new List<ICharacter>();
+    protected List<ICharacter> mSoldiers = new List<ICharacter>();
+
+    public void AddEnemy(IEnemy enemy)
     {
-        throw new NotImplementedException();
+        mEnemys.Add(enemy);
     }
 
-    public void Release()
+    public void RemoveEnemy(IEnemy enemy)
     {
-        throw new NotImplementedException();
+        mEnemys.Remove(enemy);
     }
-  
-    public void Update()
+
+    public void AddSoldier(ISoldier soldier)
     {
-        throw new NotImplementedException(); 
+        mSoldiers.Add(soldier);
+    }
+
+    public void RemoveSoldier(ISoldier soldier)
+    {
+        mSoldiers.Remove(soldier);
+    }
+
+  
+    public override void Update()
+    {
+        UpdateEnemys();
+        UpdateSoldiers();
+    }
+
+    protected void UpdateEnemys()
+    {
+        foreach (IEnemy e in mEnemys)
+        {
+            e.Update();
+            e.UpdateFSMAI(mSoldiers);
+        }
+    }
+
+    protected void UpdateSoldiers()
+    {
+        foreach (ISoldier s in mSoldiers)
+        {
+            s.Update();
+            s.UpdateFSMAI(mEnemys);
+        }
     }
 }

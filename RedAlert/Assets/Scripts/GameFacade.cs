@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using UnityEngine;
 
 //既有外观模式，也是中介者
 public class GameFacade
@@ -97,6 +97,12 @@ public class GameFacade
         mGamePauseUI.Release();
         mGameStateInfoUI.Release();
         mSoldierInfoUI.Release();
+    }
+
+    public Vector3 GetEnemyTargetPosition()
+    {
+        //TODO
+        return Vector3.zero;
     }
 
 

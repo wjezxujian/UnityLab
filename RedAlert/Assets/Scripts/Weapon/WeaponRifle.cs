@@ -11,6 +11,10 @@ public class WeaponRifle : IWeapon
     //    Debug.Log("播放声音 Rilfe");
     //}
 
+    public WeaponRifle(int atk, float atkRange, GameObject gameObject) : base(atk, atkRange, gameObject)
+    {
+
+    }
     protected override void SetEffectDisplayTime()
     {
         mEffectDisplayTime = 0.3f;
