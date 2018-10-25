@@ -53,7 +53,7 @@ class EnemyFactory : ICharacterFactory
         characterGO.transform.position = spawnPosition;
         character.gameObject = characterGO;
 
-        IWeapon weapon = FactoryManager.weaponFactory.CreateWeapon(WeaponType);
+        IWeapon weapon = FactoryManager.weaponFactory.CreateWeapon(weaponType);
         character.weapon = weapon;
 
         return character;
