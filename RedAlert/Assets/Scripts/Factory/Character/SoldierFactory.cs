@@ -9,7 +9,7 @@ class SoldierFactory : ICharacterFactory
     {
         ICharacter character = new T();
 
-        ICharacterBuilder builder = new SoldierBuilder(character, typeof(T), weaponType, spawnPosition, lv);-
+        ICharacterBuilder builder = new SoldierBuilder(character, typeof(T), weaponType, spawnPosition, lv);
 
         return CharacterBuilderDirector.Construct(builder);
     }

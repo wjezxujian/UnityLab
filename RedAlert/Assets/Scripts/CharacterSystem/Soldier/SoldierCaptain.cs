@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-class SoldierCaptain : ISoldier
+public class SoldierCaptain : ISoldier
 {
     protected override void PlayEffect()
     {
