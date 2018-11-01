@@ -11,7 +11,7 @@ class WeaponRocket : IWeapon
     //    Debug.Log("播放声音 Rocket");
     //}
 
-    public WeaponRocket(int atk, float atkRange, GameObject gameObject) : base(atk, atkRange, gameObject)
+    public WeaponRocket(WeaponBaseAttr baseAttr, GameObject gameObject) : base(baseAttr, gameObject)
     {
 
     }

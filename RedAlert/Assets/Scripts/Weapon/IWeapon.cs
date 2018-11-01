@@ -12,8 +12,7 @@ public enum WeaponType
 
 public abstract class IWeapon
 {
-    protected int mAtk;
-    protected float mAtkRange;
+    protected WeaponBaseAttr mBaseAttr;
     //protected int mAtkPlusValue;
 
     protected GameObject mGameObject;
@@ -26,18 +25,17 @@ public abstract class IWeapon
 
     protected float mEffectDisplayTime;
 
-    public float atkRange { get { return mAtkRange; } }
+    public float atkRange { get { return mBaseAttr.atkRange; } }
 
-    public int atk { get { return mAtk; } }
+    public int atk { get { return mBaseAttr.atk; } }
 
     public ICharacter owner { set { mOwner = value; } }
 
     public GameObject gameObject { get { return mGameObject; } }
 
-    public IWeapon(int atk, float atkRange, GameObject gameObject)
+    public IWeapon(WeaponBaseAttr baseAttr, GameObject gameObject)
     {
-        mAtk = atk;
-        mAtkRange = atkRange;
+        mBaseAttr = baseAttr;
         mGameObject = gameObject;
 
         Transform effect = mGameObject.transform.Find("Effect");

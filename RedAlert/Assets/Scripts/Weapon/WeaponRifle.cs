@@ -11,7 +11,7 @@ public class WeaponRifle : IWeapon
     //    Debug.Log("播放声音 Rilfe");
     //}
 
-    public WeaponRifle(int atk, float atkRange, GameObject gameObject) : base(atk, atkRange, gameObject)
+    public WeaponRifle(WeaponBaseAttr baseAttr, GameObject gameObject) : base(baseAttr, gameObject)
     {
 
     }
