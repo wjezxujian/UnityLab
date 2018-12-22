@@ -29,5 +29,7 @@ public abstract class ICharacterBuilder
 
     public abstract void AddWeapon();
 
+    public abstract void AddInCharacterSystem();
+
     public abstract ICharacter GetResult();
 }

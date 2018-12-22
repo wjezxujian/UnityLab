@@ -5,18 +5,18 @@ using System.Text;
 
 public class StageSystem : IGameSystem
 {
-    public void Init()
+    public override void Init()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
-    public void Release()
+    public override void Release()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
-    public void Update()
+    public override void Update()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

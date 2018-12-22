@@ -14,7 +14,8 @@ public class ResourcesAssetFactory : IAssetFactory
 
     public AudioClip LoadAudioClip(string name)
     {
-        return LoadAsset(AudioPath + name) as AudioClip;
+        return Resources.Load(SpritePath + name, typeof(AudioClip)) as AudioClip;
+        //return LoadAsset(AudioPath + name) as AudioClip;
     }
 
     public GameObject LoadEffect(string name)
@@ -34,7 +35,8 @@ public class ResourcesAssetFactory : IAssetFactory
 
     public Sprite LoadSprite(string name)
     {
-        return LoadAsset(SpritePath + name) as Sprite;
+        return Resources.Load(SpritePath + name, typeof(Sprite)) as Sprite;
+        //return LoadAsset(SpritePath + name) as Sprite;
     }
 
     public GameObject LoadWeapon(string name)
