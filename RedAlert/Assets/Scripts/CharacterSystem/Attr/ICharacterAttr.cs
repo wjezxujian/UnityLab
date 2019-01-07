@@ -16,6 +16,8 @@ public class ICharacterAttr
     public int critValue { get { return mStrategy.GetCritDmgValue(mBaseAttr.critRate); } }
     public int dmgDescValue { get { return mDmgDescValue; } }
     public int currentHP { get { return mCurrentHP; } }
+    public IAttrStrategy strategy { get { return mStrategy; } }
+    public CharacterBaseAttr baseAttr { get { return mBaseAttr; } }
 
     public ICharacterAttr(IAttrStrategy strategy, int lv, CharacterBaseAttr baseAttr)
     {

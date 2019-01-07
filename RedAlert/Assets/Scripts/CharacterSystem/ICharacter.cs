@@ -14,11 +14,13 @@ public abstract class ICharacter
     protected AudioSource mAudio;
     protected IWeapon mWapon;
     protected Animation mAnin;
+    protected bool mIsKilled = false;
+    protected bool mCanDestroy = false;
+    protected float mDestoryTimer = 2f;
 
-    public virtual void UpdateFSMAI(List<ICharacter> targets)
-    {
 
-    }
+    public abstract void UpdateFSMAI(List<ICharacter> targets);
+    public abstract void RunVisitor(ICharacterVisitor visitor);
 
     public Vector3 position
     {
@@ -41,7 +43,9 @@ public abstract class ICharacter
         }
     }
 
-    public ICharacterAttr attr { set { mAttr = value; } }
+    public ICharacterAttr attr { set { mAttr = value; }  get { return mAttr; } }
+    public bool canDestory { get { return mCanDestroy; } }
+    public bool isKilled { get { return mIsKilled; } }
 
     public GameObject gameObject
     {
@@ -51,6 +55,11 @@ public abstract class ICharacter
             mNavAgent = mGameObject.GetComponent<NavMeshAgent>();
             mAudio = mGameObject.GetComponent<AudioSource>();
             mAnin = mGameObject.GetComponentInChildren<Animation>();
+        }
+
+        get
+        {
+            return mGameObject;
         }
     }
 
@@ -62,6 +71,11 @@ public abstract class ICharacter
             mWapon.owner = this;
             GameObject child = UnityTools.FindChild(mGameObject, "weapon-point");
             UnityTools.Attach(child, mWapon.gameObject);
+        }
+
+        get
+        {
+            return mWapon;
         }
     }
 
@@ -91,9 +105,15 @@ public abstract class ICharacter
 
     }
 
-    public void Killed()
+    public virtual void Killed()
     {
-        //TODO
+        mIsKilled = true;
+        mNavAgent.isStopped = true;
+    }
+
+    public void Release()
+    {
+        GameObject.Destroy(mGameObject);
     }
 
     public void PlayAnimation(string animName)
@@ -109,8 +129,8 @@ public abstract class ICharacter
 
         //控制销毁
         effectGO.AddComponent<DestoryForTime>();
-        DestoryForTime comp = effectGO.GetComponent<DestoryForTime>() as DestoryForTime;
-        comp.time = 1f;
+        //DestoryForTime comp = effectGO.GetComponent<DestoryForTime>() as DestoryForTime;
+        //comp.time = 1f;
     }
 
     protected void DoPlaySound(string soundName)
@@ -128,7 +148,18 @@ public abstract class ICharacter
 
     public virtual void Update()
     {
+        if (mIsKilled)
+        {
+            mDestoryTimer -= Time.deltaTime;
+            if (mDestoryTimer <= 0)
+            {
+                mCanDestroy = true;
+            }
 
+            return;
+        }
+
+        mWapon.Update();
     }
 
 }

@@ -16,7 +16,7 @@ public static class UnityTools
             {
                 if(isFinded)
                 {
-                    Debug.LogWarning("在游戏物体" + parent + "下存在不止一个子物体：" + childName);
+                    Debug.LogWarning("在游戏物体" + parent + "下存在不只一个子物体：" + childName);
                 }
                 isFinded = true;
                 child = t;

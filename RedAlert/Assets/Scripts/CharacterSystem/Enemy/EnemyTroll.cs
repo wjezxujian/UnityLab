@@ -4,7 +4,7 @@ using System.Text;
 
 public class EnemyTroll : IEnemy
 {
-    protected override void PlayEffect()
+    public override void PlayEffect()
     {
         DoPlayEffect("TrollHitEffect");
     }

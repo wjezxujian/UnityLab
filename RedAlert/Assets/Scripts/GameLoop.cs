@@ -21,6 +21,7 @@ public class GameLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mContorller.StateUpdate();
+        if(mContorller != null)
+            mContorller.StateUpdate();
     }
 }

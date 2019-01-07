@@ -5,7 +5,7 @@ using System.Text;
 
 class EnemyOgre : IEnemy
 {
-    protected override void PlayEffect()
+    public override void PlayEffect()
     {
         DoPlayEffect("OgreHitEffect");
     }

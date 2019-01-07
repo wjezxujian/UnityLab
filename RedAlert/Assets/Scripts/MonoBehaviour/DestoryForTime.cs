@@ -11,7 +11,7 @@ public class DestoryForTime : MonoBehaviour
 
     private void Start()
     {
-        Invoke("Destory", m_time);
+        Invoke("OnDestroy", m_time);
     }
 
     private void OnDestroy()

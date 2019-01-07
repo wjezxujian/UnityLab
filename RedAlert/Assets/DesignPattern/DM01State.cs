@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DM01State : MonoBehaviour
 {
@@ -21,6 +19,7 @@ public class DM01State : MonoBehaviour
 public class Context
 {
     private IState mState;
+
     public void SetState(IState state)
     {
         mState = state;
@@ -49,12 +48,11 @@ public class ConcreteStateA : IState
     public void Handle(int args)
     {
         Debug.Log("ConcreteStateA.Handle " + args);
-        if(args > 10)
+        if (args > 10)
         {
             mContext.SetState(new ConcreteStateB(mContext));
         }
     }
-
 }
 
 public class ConcreteStateB : IState
@@ -69,7 +67,7 @@ public class ConcreteStateB : IState
     public void Handle(int args)
     {
         Debug.Log("ConcreteStateB.Handle " + args);
-        if(args <= 10)
+        if (args <= 10)
         {
             mContext.SetState(new ConcreteStateA(mContext));
         }

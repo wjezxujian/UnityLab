@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-class DM02Bridge : MonoBehaviour
+﻿using UnityEngine;
+
+internal class DM02Bridge : MonoBehaviour
 {
     private void Start()
     {
@@ -48,7 +46,6 @@ public abstract class IRenderEngine
     public abstract void Render(string name);
 }
 
-
 public class Sphere : IShape
 {
     public Sphere(IRenderEngine re) : base(re)
@@ -61,8 +58,8 @@ public class Sphere : IShape
     //public DirectX dx = new DirectX();
 
     //public void Draw()
-    //{ 
-    //    openGL.Render(name); 
+    //{
+    //    openGL.Render(name);
     //}
     //public void DrawDX()
     //{
@@ -82,7 +79,6 @@ public class Cube : IShape
     //public OpenGL openGL = new OpenGL();
     //public DirectX dx = new DirectX();
 
-
     //public void Draw()
     //{
     //    openGL.Render(name);
@@ -100,6 +96,7 @@ public class Capsule : IShape
     {
         name = "Capsule";
     }
+
     //public string name = "Capsule";
 
     //public OpenGL openGL = new OpenGL();

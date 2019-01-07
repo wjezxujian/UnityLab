@@ -13,7 +13,7 @@ public class GameFacade
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = new GameFacade();
             }
@@ -26,9 +26,9 @@ public class GameFacade
         get { return mIsGameOver; }
     }
 
-    private GameFacade(){}
+    private GameFacade() { }
 
-    private AchieventmentSystem mAchievementSystem;
+    private ArchieventmentSystem mAchievementSystem;
     private CampSystem mCampSystem;
     private CharacterSystem mCharacterSystem;
     private EnergySystem mEnergySystem;
@@ -43,7 +43,7 @@ public class GameFacade
 
     public void Init()
     {
-        mAchievementSystem = new AchieventmentSystem();
+        mAchievementSystem = new ArchieventmentSystem();
         mCampSystem = new CampSystem();
         mCharacterSystem = new CharacterSystem();
         mEnergySystem = new EnergySystem();
@@ -67,6 +67,9 @@ public class GameFacade
         mGamePauseUI.Init();
         mGameStateInfoUI.Init();
         mSoldierInfoUI.Init();
+
+        //加载数据
+        LoadMemento();
     }
 
     public void Update()
@@ -97,12 +100,14 @@ public class GameFacade
         mGamePauseUI.Release();
         mGameStateInfoUI.Release();
         mSoldierInfoUI.Release();
+
+        //保存数据
+        CreateMemento();
     }
 
     public Vector3 GetEnemyTargetPosition()
     {
-        //TODO
-        return Vector3.zero;
+        return mStageSystem.targetPosition;
     }
 
     public void ShowCampInfo(ICamp camp)
@@ -119,6 +124,69 @@ public class GameFacade
     {
         mCharacterSystem.AddEnemy(enemy);
     }
+
+    public void RemoveEnemy(IEnemy enemy)
+    {
+        mCharacterSystem.RemoveEnemy(enemy);
+    }
+
+    public bool TakeEnergy(int value)
+    {
+        return mEnergySystem.TakeEnergy(value);
+    }
+
+    public void RecycleEnergy(int value)
+    {
+        mEnergySystem.Recycle(value);
+    }
+
+    public void ShowMsg(string msg)
+    {
+        mGameStateInfoUI.ShowMsg(msg);
+    }
+
+    public void UpdateEnergySlider(int nowEnergy, int maxEnergy)
+    {
+        mGameStateInfoUI.UpdateEnergySlider(nowEnergy, maxEnergy);
+    }
+
+    public void RegisterObserver(GameEventType eventType, IGameEventObserver observer)
+    {
+        mGameEventSystem.RegisterObserver(eventType, observer);
+    }
+
+    public void RemoveObserver(GameEventType eventType, IGameEventObserver observer)
+    {
+        mGameEventSystem.RemoveObserver(eventType, observer);
+    }
+
+    public void NotifySubject(GameEventType eventType)
+    {
+        mGameEventSystem.NotifySubject(eventType);
+    }
+
+    public void RunVisitor(ICharacterVisitor visitor)
+    {
+        mCharacterSystem.RunVisitor(visitor);
+    }
+
+    private void LoadMemento()
+    {
+        AchievementMemento memento = new AchievementMemento();
+        memento.LoadData();
+        mAchievementSystem.SetMemento(memento);
+    }
+
+    private void CreateMemento()
+    {
+        AchievementMemento memento = mAchievementSystem.CreateMemento();
+        memento.SaveData();
+    }
+
+
+
+
+
 
 
 }

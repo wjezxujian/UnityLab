@@ -21,17 +21,23 @@ public class SoldierFsmSystem
 
     public void AddState(ISoldierState state)
     {
-        if(state == null)
+        if (state == null)
         {
-            Debug.LogError("要添加的状态为空");
+            Debug.LogError("要添加的状态为空"); return;
+        }
+        if (mStates.Count == 0)
+        {
+            mStates.Add(state);
+            mCurrentState = state;
             return;
         }
-
-        if(mStates.Count != 0 && mStates.Contains(state))
+        foreach (ISoldierState s in mStates)
         {
-            Debug.LogError("要添加的状态ID[" + state + "]已经存在");
+            if (s.stateID == state.stateID)
+            {
+                Debug.LogError("要添加的状态ID[" + s.stateID + "]已经添加"); return;
+            }
         }
-
         mStates.Add(state);
     }
 

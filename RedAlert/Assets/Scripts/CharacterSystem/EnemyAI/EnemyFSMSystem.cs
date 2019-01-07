@@ -27,9 +27,19 @@ public class EnemyFSMSystem
             return;
         }
 
-        if (mStates.Count != 0 && mStates.Contains(state))
+        if (mStates.Count == 0)
         {
-            Debug.LogError("要添加的状态ID[" + state + "]已经存在");
+            mStates.Add(state);
+            mCurrentState = state;
+            mCurrentState.DoBeforeEntering();
+            return;
+        }
+        foreach (IEnemyState s in mStates)
+        {
+            if (s.stateID == state.stateID)
+            {
+                Debug.LogError("要添加的状态ID[" + s.stateID + "]已经添加"); return;
+            }
         }
 
         mStates.Add(state);

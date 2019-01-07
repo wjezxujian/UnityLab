@@ -7,7 +7,8 @@ public enum SoldierType
 {
     Rookie,
     Sergeant,
-    Captian
+    Captian,
+    Captive
 }
 
 public abstract class ISoldier : ICharacter
@@ -21,12 +22,19 @@ public abstract class ISoldier : ICharacter
 
     public override void UpdateFSMAI(List<ICharacter> targets)
     {
+        if (mIsKilled)
+        {
+            return;
+        }
+
         mFsmSystem.CurrentState.Reason(targets);
         mFsmSystem.CurrentState.Act(targets);
     }
 
     public override void UnderAttack(int damage)
     {
+        if (mIsKilled) return;
+
         base.UnderAttack(damage);
         
         if (mAttr.currentHP <= 0)
@@ -35,6 +43,12 @@ public abstract class ISoldier : ICharacter
             PlayEffect();
             Killed();
         }
+    }
+
+    public override void Killed()
+    {
+        base.Killed();
+        GameFacade.Instance.NotifySubject(GameEventType.SoldierKilled);
     }
 
     protected abstract void PlaySound();
@@ -57,9 +71,11 @@ public abstract class ISoldier : ICharacter
         attackState.AddTransition(SoldierTransition.SeeEnemy, SoldierStateID.Chase);
 
         mFsmSystem.AddState(idleState, chaseState, attackState);
+    }
 
-
-
+    public override void RunVisitor(ICharacterVisitor visitor)
+    {
+        visitor.VisitSoldier(this);
     }
 
 }

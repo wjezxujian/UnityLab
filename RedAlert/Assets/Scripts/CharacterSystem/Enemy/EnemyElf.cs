@@ -4,7 +4,7 @@ using System.Text;
 
 class EnemyElf : IEnemy
 {
-    protected override void PlayEffect()
+    public override void PlayEffect()
     {
         DoPlayEffect("ElfHitEffect");
     }

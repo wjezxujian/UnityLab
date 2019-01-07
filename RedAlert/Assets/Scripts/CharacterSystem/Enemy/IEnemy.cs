@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+public enum EnemyType
+{
+     Elf,
+     Ogre,
+     Troll
+}
+
 public abstract class IEnemy : ICharacter
 {
     EnemyFSMSystem mFSMSystem;
@@ -14,6 +21,11 @@ public abstract class IEnemy : ICharacter
 
     public override void UpdateFSMAI(List<ICharacter> targets)
     {
+        if (mIsKilled)
+        {
+            return;
+        }
+
         mFSMSystem.CurrentState.Reason(targets);
         mFSMSystem.CurrentState.Act(targets);
     }
@@ -33,6 +45,8 @@ public abstract class IEnemy : ICharacter
 
     public override void UnderAttack(int damage)
     {
+        if (mIsKilled) return;
+
         base.UnderAttack(damage);
         PlayEffect();
 
@@ -46,7 +60,17 @@ public abstract class IEnemy : ICharacter
 
     }
 
-    protected abstract void PlayEffect();
-    
+    public abstract void PlayEffect();
 
+    public override void Killed()
+    {
+        base.Killed();
+
+        GameFacade.Instance.NotifySubject(GameEventType.EmemyKilled);
+    }
+
+    public override void RunVisitor(ICharacterVisitor visitor)
+    {
+        visitor.VisitorEnemy(this);
+    }
 }

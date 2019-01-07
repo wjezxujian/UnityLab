@@ -20,11 +20,12 @@ class SoldierChaseState : ISoldierState
 
     public override void Reason(List<ICharacter> targets)
     {
-        if(targets == null && targets.Count == 0)
+        if(targets == null || targets.Count == 0)
         {
             mFSM.PerformTransition(SoldierTransition.NoEnemy);
             return;
         }
+
         float distance = Vector3.Distance(targets[0].position, mCharacter.position);
 
         if(distance < mCharacter.atkRange)

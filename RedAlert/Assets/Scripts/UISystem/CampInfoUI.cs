@@ -17,6 +17,7 @@ class CampInfoUI : IBaseUI
     private Text mAliveCount;
     private Text mTrainningCount;
     private Text mTrainTime;
+    private Text mTrainBtnText;
 
     private ICamp mCamp;
 
@@ -38,9 +39,13 @@ class CampInfoUI : IBaseUI
         mAliveCount = UITools.FindChild<Text>(mRootUI, "AliveCount");
         mTrainningCount = UITools.FindChild<Text>(mRootUI, "TrainningCount");
         mTrainTime = UITools.FindChild<Text>(mRootUI, "TrainTime");
+        mTrainBtnText = UITools.FindChild<Text>(mRootUI, "TrainBtnText");
+
 
         mTrainBtn.onClick.AddListener(OnTrainClick);
         mCancelTrainBtn.onClick.AddListener(OnCancelTrainClick);
+        mUpgradeCampBtn.onClick.AddListener(OnCampUpgradeClick);
+        mUpgradeWeaponBtn.onClick.AddListener(OnWeaponUpgradeClick);
 
         Hide();
     }
@@ -62,6 +67,8 @@ class CampInfoUI : IBaseUI
         mCampName.text = camp.name;
         mCampLevel.text = camp.lv.ToString();
         ShowWeaponLevel(camp.weaponType);
+
+        mTrainBtnText.text = "训练\n" + mCamp.energyCostTrain + "点能量";
 
         ShowTrainInfo();
     }
@@ -96,15 +103,67 @@ class CampInfoUI : IBaseUI
         }
     }
 
-    public void OnTrainClick()
+    private void OnTrainClick()
     {
-        //能量是否足够 TODO
-        mCamp.Train();
+        int energy = mCamp.energyCostTrain;
+        if(GameFacade.Instance.TakeEnergy(energy))
+        {
+            mCamp.Train();
+        }
+        else
+        {
+            mFacade.ShowMsg("训练士兵需要能量： " + energy + "能量不足，请稍后进行升级");
+        }
+
+        
     }
 
-    public void OnCancelTrainClick()
+    private void OnCancelTrainClick()
     {
-        //回收能量 TODO
+        mFacade.RecycleEnergy(mCamp.energyCostTrain);
         mCamp.CancelTrainCommand();
+    }
+
+    private void OnCampUpgradeClick()
+    {
+        int energy = mCamp.energyCountCampUpgrade;
+        if(energy < 0)
+        {
+            mFacade.ShowMsg("兵营已到最大等级，无法再进行升级");
+            return;
+        }
+
+        if(mFacade.TakeEnergy(energy))
+        {
+            mCamp.UpgradeCamp();
+            ShowCampInfo(mCamp);
+        }
+        else
+        {
+            mFacade.ShowMsg("升级兵营需要能量： " + energy + "能量不足，请稍后进行升级");
+
+        }
+        
+    }
+
+    private void OnWeaponUpgradeClick()
+    {
+        int energy = mCamp.energyCountWeaponUpgrade;
+        if(energy < 0)
+        {
+            mFacade.ShowMsg("武器已到最大等级，无法再进行升级");
+            return;
+        }
+
+        if (mFacade.TakeEnergy(energy))
+        {
+            mCamp.UpdateWeapon();
+            ShowCampInfo(mCamp);
+        }
+        else
+        {
+            mFacade.ShowMsg("升级武器需要能量： " + energy + "能量不足，请稍后进行升级");
+        }
+       
     }
 }

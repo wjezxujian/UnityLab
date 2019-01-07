@@ -15,6 +15,11 @@ class GameStateInfoUI : IBaseUI
     private Button mBackMenuBtn;
     private Text mMessage;
     private Slider mEnergySlider;
+    private Text mEnergyText;
+
+    private float mMsgTimer = 0;
+    private int mMsgTime = 2;
+    private AliveCountVisitor mAliveCountVisitor = new AliveCountVisitor();
 
     public override void Init()
     {
@@ -39,7 +44,47 @@ class GameStateInfoUI : IBaseUI
         mBackMenuBtn = UITools.FindChild<Button>(mRootUI, "BackMenuBtn");
         mMessage = UITools.FindChild<Text>(mRootUI, "Message");
         mEnergySlider = UITools.FindChild<Slider>(mRootUI, "EnergySlider");
+        mEnergyText = UITools.FindChild<Text>(mRootUI, "EnergyText");
 
+        mMessage.text = "";
         mGameOverUI.SetActive(false);
+
+        
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if(mMsgTimer > 0)
+        {
+            mMsgTimer -= Time.deltaTime;
+            if(mMsgTimer <= 0)
+            {
+                mMessage.text = "";
+            }
+        }
+
+        UpdateAliveCount();
+    }
+
+    public void ShowMsg(string msg)
+    {
+        mMessage.text = msg;
+        mMsgTimer = mMsgTime;
+    }
+
+    public void UpdateEnergySlider(int nowEnergy, int maxEnergy)
+    {
+        mEnergySlider.value = (float)nowEnergy / maxEnergy;
+        mEnergyText.text = "(" + nowEnergy + "/" + maxEnergy + ")";
+    }
+
+    public void UpdateAliveCount()
+    {
+        mAliveCountVisitor.Reset();
+        mFacade.RunVisitor(mAliveCountVisitor);
+        mSoliderCount.text = mAliveCountVisitor.soldierCount.ToString();
+        mEnemyCount.text = mAliveCountVisitor.enemyCount.ToString();
     }
 }
